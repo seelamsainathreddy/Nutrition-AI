@@ -1,2 +1,1 @@
-# nutition-ai
-NutritionAI
+# Beatnik
