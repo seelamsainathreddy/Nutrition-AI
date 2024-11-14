@@ -37,7 +37,7 @@ const Hero = () => {
     >
       <div className='relative xl:w-2/5 flex flex-col mt-[100px] items-start w-full  max-xl:padding-x '>
         <p className='text-xl font-montserrat text-green-1000'>
-        Connect with Top Artists for Your Creative Projects
+        Connect with Top Virtual Ai Nutritionists
 
         </p>
 
