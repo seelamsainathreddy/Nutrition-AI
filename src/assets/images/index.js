@@ -5,8 +5,8 @@ import bigShoe3 from './big-shoe3.png'
 import customer1 from './customer1.jpeg'
 import customer2 from './customer2.svg'
 
-import footerLogo from './header-logo.png'
-import headerLogo from './header-logo.png'
+import footerLogo from './NutritionBox.png'
+import headerLogo from './NutritionBox.png'
 
 import offer from './offer.svg'
 
@@ -20,7 +20,7 @@ import shoe8 from './shoe8.svg'
 import artist1 from './artist1.png'
 import artist2 from './artist2.png'
 import artist3 from './artist3.png'
-
+import video from './NutritionBox.mp4'
 import thumbnailBackground from './thumbnail-background.svg'
 import thumbnailShoe1 from './thumbnail-shoe1.svg'
 import thumbnailShoe2 from './thumbnail-shoe2.svg'
@@ -36,7 +36,7 @@ export {
 
     footerLogo,
     headerLogo,
-
+    video,
     offer,
     shoe4,
     shoe5,

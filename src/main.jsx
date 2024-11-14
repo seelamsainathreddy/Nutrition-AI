@@ -8,6 +8,9 @@ import Home from './components/Home';
 import Login from './routes/Login';
 import SignUp from './routes/SignUp';
 import { ProfilePage } from './components';
+import Console from './routes/Console'
+import ChatArea from './components/ChatArea';
+
 
 function Root() {
   const [token, setToken] = useState(null);
@@ -23,6 +26,14 @@ function Root() {
           </Route>
           <Route path="/login" element={<Login setToken={setToken} />} />
           <Route path="/signup" element={<SignUp />} />
+
+          <Route path="/console" element={<Console />}>
+            <Route path="home" element={<Home />} />
+            <Route path="" element={<ChatArea />} />
+
+          </Route>
+
+
 
         </Routes>
       </HashRouter>
