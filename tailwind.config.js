@@ -43,7 +43,7 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: ['daisyui'],
 
   
 }

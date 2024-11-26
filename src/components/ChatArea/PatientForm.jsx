@@ -1,18 +1,18 @@
 import React from 'react';
 import OpenAI from 'openai';
-
 const openai = new OpenAI({
   apiKey: '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',
   dangerouslyAllowBrowser: true
 });
 
-const PatientForm = ({setDietPlan}) => {
+
+
+const PatientForm = ({setDietPlan, setIsLoading}) => {
   const [formData, setFormData] = React.useState({
-    name: '',
-    calories: '',
-    protein: ''
+    age: '',
+    weight: '',
+    height: ''
   });
-  const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
 
   const handleChange = (e) => {
@@ -24,87 +24,90 @@ const PatientForm = ({setDietPlan}) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission behavior
     setIsLoading(true);
-    setError(null);
-    
     try {
-      const completion = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content: "You are a helpful nutritionist assistant that creates personalized diet plans."
-          },
-          {
-            role: "user",
-            content: `Create a detailed diet plan for a patient named ${formData.name} with a daily calorie target of ${formData.calories} calories and protein target of ${formData.protein} grams. Include meal suggestions and timing.`
-          }
-        ],
-        temperature: 0.7,
+      console.log("inside the handle submit");
+
+      // Construct the message string
+      const message = `age: ${formData.age}, weight: ${formData.weight}, height: ${formData.height}`;
+
+      const response = await fetch("https://pragmatic-armor-441322-c5.el.r.appspot.com/api/dietPlan/", {
+        method: 'POST', // Change to POST
+        headers: {
+          'Content-Type': 'application/json', // Set the content type to JSON
+        },
+        body: JSON.stringify({ message }), // Send the message as the request body
       });
 
-      const dietPlan = completion.choices[0].message.content;
-      setDietPlan(dietPlan);
-    } catch (error) {
-      console.error('Error generating diet plan:', error);
-      setError('Failed to generate diet plan. Please try again.');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Parse the response as JSON
+      const data = await response.json();
+      console.log("Received data:", data);
+
+      // Update state with the received data
+      setDietPlan(data);
+    } catch (err) {
+      setError(err.message); // Handle errors
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="mt-6 max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg ml-6">
+<>    <div className="mt-6 max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg ml-6">
       <h2 className="text-2xl font-semibold text-gray-700 mb-6">Patient Information</h2>
       <form className="space-y-4" onSubmit={handleSubmit}>
         {/* Name Field */}
         <div className='flex items-center'>
-          <label htmlFor="name" className="w-1/3 block text-sm font-medium text-gray-700 mr-3">
-            Name
+          <label htmlFor="age" className="w-1/3 block text-sm font-medium text-gray-700 mr-3">
+            Age
           </label>
           <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter patient's name"
+            type="number"
+            id="age"
+            name="age"
+            placeholder="Enter patient's age"
             className="w-2/3 mt-1 block px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
-            value={formData.name}
+            value={formData.age}
             onChange={handleChange}
           />
         </div>
     
         {/* Calorie Intake Field */}
         <div className='flex  items-center'>
-          <label htmlFor="calories" className="w-1/3 block text-sm font-medium text-gray-700 mr-3">
-            Calorie Intake
+          <label htmlFor="weight" className="w-1/3 block text-sm font-medium text-gray-700 mr-3">
+            weight
           </label>
           <input
             type="number"
-            id="calories"
-            name="calories"
-            placeholder="Enter daily calorie intake"
+            id="weight"
+            name="weight"
+            placeholder="Enter weight of the person"
             className="w-2/3 mt-1 block px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
-            value={formData.calories}
+            value={formData.weight}
             onChange={handleChange}
           />
         </div>
     
         {/* Protein Intake Field */}
         <div className='flex  items-center'>
-          <label htmlFor="protein" className="w-1/3 block text-sm font-medium text-gray-700 mr-3">
-            Protein Intake (grams)
+          <label htmlFor="height" className="w-1/3 block text-sm font-medium text-gray-700 mr-3">
+            Height (Ft)
           </label>
           <input
             type="number"
-            id="protein"
-            name="protein"
-            placeholder="Enter daily protein intake"
+            id="height"
+            name="height"
+            placeholder="Enter height of the person"
             className="w-2/3 mt-1 block  px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
-            value={formData.protein}
+            value={formData.height}
             onChange={handleChange}
           />
         </div>
@@ -120,7 +123,9 @@ const PatientForm = ({setDietPlan}) => {
         </div>
       </form>
     </div>
+  </>
   );
+
 }
 
 export default PatientForm

@@ -5,11 +5,11 @@ import { Outlet } from 'react-router-dom'
 const Console = () => {
   return (
    
-    <section className="flex overflow-x-auto">
+    <section className="flex">
     <header>
       <NavItem />
     </header>
-    <main className='overflow-x-auto'>
+    <main>
       <Outlet />
     </main>
      </section>

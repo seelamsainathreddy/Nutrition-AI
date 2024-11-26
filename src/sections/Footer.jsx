@@ -5,7 +5,7 @@ import { footerLinks, socialMedia } from "../constants";
 const Footer = () => {
   return (
    
-    <footer className='bg-black padding-x padding-t pb-8 max-container min-w-full'>
+    <footer className='p-8 bg-black padding-x padding-t max-container min-w-full'>
       <div className='flex justify-between items-start gap-20 flex-wrap max-lg:flex-col'>
         <div className='flex flex-col items-start'>
           <a href='/'>

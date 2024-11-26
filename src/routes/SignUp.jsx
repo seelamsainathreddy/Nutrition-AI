@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 async function signUpUser(credentials) {
-  return fetch('http://localhost:8000/signup', {
+  return fetch('https://pragmatic-armor-441322-c5.el.r.appspot.com/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

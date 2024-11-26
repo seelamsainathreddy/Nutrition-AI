@@ -9,7 +9,7 @@ const Nav = () => {
   const [token, setToken] = useState(null);
   const isAuth = token !== null;
   return (
-    <header className='padding-x py-8  z-10 w-full'>
+    <header className=' sticky top-0 padding-x py-8  z-10 w-full'>
       <nav className='flex justify-between items-center max-container'>
         <a href='/'>
           <img
