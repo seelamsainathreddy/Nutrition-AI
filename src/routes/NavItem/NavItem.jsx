@@ -5,16 +5,16 @@ function NavItem({ icon, text, url, state }) {
 
   return (
 <div
-  className="ml-1 fixed top-0 left-0 flex h-screen w-[250px] flex-col rounded-xl bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
+  className="ml-1 fixed top-0 left-0 flex h-screen w-[250px]  flex-col rounded-xl bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
   <div className="p-4 mb-2">
     <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
       Nutrition Box
     </h5>
   </div>
   <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
-    <div className="patients h-[100px] w-2/3 overflow-y-auto">
+    {/* <div className="patients h-[100px] w-2/3 overflow-y-auto">
       <Patients/>
-      </div>
+      </div> */}
  
     <div role="button"
       className="flex mt-6 items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">

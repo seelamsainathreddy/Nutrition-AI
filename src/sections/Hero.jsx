@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import {artists,  shoes, statistics } from "../constants";
-import { Button, ShoeCard } from "../components";
-//import { bigShoe1 } from "../assets/images";
+import {artists } from "../constants";
+import { Button } from "../components";
 import { headerLogo } from "../assets/images";
-import { arrowRight } from "../assets/icons";
+
 import { useNavigate } from 'react-router-dom';
 
 
@@ -33,9 +32,9 @@ const Hero = () => {
   return (
     <section
       id='home'
-      className='w-full h-[300px] flex xl:flex-row flex-col justify-center min-h-screen max-container first-letter '
+      className='w-full pt-6 pb-10  flex xl:flex-row flex-col justify-center min-h-screen max-container first-letter '
     >
-      <div className='relative xl:w-2/5 flex flex-col mt-[100px] items-start w-full  max-xl:padding-x '>
+      <div className='relative xl:w-2/5 flex flex-col mt-[100px] items-start sm:px-10 w-full  max-xl:padding-x '>
         <p className='text-xl font-montserrat text-green-1000'>
         Connect with Top Virtual Ai Nutritionists
 
@@ -57,7 +56,7 @@ const Hero = () => {
 
       
       </div>
-      <div className='relative xl:w-2/5 flex flex-col  items-start w-full  max-xl:padding-x'>
+      <div className='relative xl:w-2/5   items-start w-full  max-xl:padding-x'>
         <img src={headerLogo} alt="" />
       </div>
 

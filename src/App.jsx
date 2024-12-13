@@ -1,14 +1,7 @@
 import { Nav } from "./components";
 import { Outlet } from "react-router-dom";
 import {
-  CustomerReviews,
-  Footer,
-  Hero,
-  PopularProducts,
-  Services,
-  SpecialOffer,
-  Subscribe,
-  SuperQuality,
+  Footer
 } from "./sections";
 
 const App = () => {

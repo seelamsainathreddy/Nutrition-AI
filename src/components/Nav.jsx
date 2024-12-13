@@ -1,9 +1,7 @@
 import { hamburger } from "../assets/icons";
 import { headerLogo } from "../assets/images";
 import { navLinks } from "../constants";
-import { Link } from 'react-router-dom';
 import { useState } from "react";
-import Login from "../routes/Login";
 
 const Nav = () => {
   const [token, setToken] = useState(null);
@@ -15,7 +13,7 @@ const Nav = () => {
           <img
             src={headerLogo}
             alt='logo'
-            className='m-0 w-[85px] h-[85px]'
+            className='m-0 w-[85px] h-[85px] sm:w-[70px] sm:h-[70px] md:w-[60px] md:h-[60px] lg:w-[50px] lg:h-[50px]'
           />
         </a>
         <ul className='flex-1 flex justify-center items-center gap-16 max-lg:hidden'>
@@ -34,13 +32,13 @@ const Nav = () => {
         <div className='flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24'>
         {!isAuth && (
             <>
-            <Link to="login" className='flex items-center gap-2'>
+            {/* <Link to="login" className='flex items-center gap-2'> */}
              Login
-            </Link>
+            {/* </Link> */}
             <span>/</span>
-            <Link to="signup" className='flex items-center gap-2'>
+            {/* <Link to="signup" className='flex items-center gap-2'> */}
               SignUp
-            </Link>
+            {/* </Link> */}
           </>
           )}
         </div>

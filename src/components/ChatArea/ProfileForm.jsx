@@ -1,8 +1,7 @@
 import React from 'react'
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
 
-const ProfileForm = ({setDietPlan, setIsLoading}) => {
+const ProfileForm = ({setDietPlan, setIsLoading, onGenerate}) => {
   const [formData, setFormData] = React.useState({
     age: '',
     gender: '',
@@ -66,6 +65,9 @@ const ProfileForm = ({setDietPlan, setIsLoading}) => {
 
       // Update state with the received data
       setDietPlan(data);
+
+      // Call the onGenerate function to scroll
+      onGenerate();
     } catch (err) {
       setError(err.message); // Handle errors
     } finally {
@@ -81,14 +83,14 @@ const ProfileForm = ({setDietPlan, setIsLoading}) => {
                 {/* <!-- Demographics Section --> */}
                 <div className="border-b border-gray-900/10 pb-12">
                     <h2 className="text-base/7 font-semibold text-gray-900">Demographics</h2>
-                    <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        <div className="sm:col-span-2">
+                    <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
+                        <div className="sm:col-span-1">
                             <label htmlFor="age" className="block text-sm/6 font-medium text-gray-900">Age</label>
                             <div className="mt-2">
                                 <input type="number" name="age" id="age" value={formData.age} onChange={handleChange} className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" />
                             </div>
                         </div>
-                        <div className="sm:col-span-2">
+                        <div className="sm:col-span-1">
                             <label htmlFor="gender" className="block text-sm/6 font-medium text-gray-900">Gender</label>
                             <div className="mt-2">
                                 <select id="gender" name="gender" value={formData.gender} onChange={handleChange} className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
@@ -98,7 +100,7 @@ const ProfileForm = ({setDietPlan, setIsLoading}) => {
                                 </select>
                             </div>
                         </div>
-                        <div className="sm:col-span-2">
+                        <div className="sm:col-span-1">
                             <label htmlFor="height-weight" className="block text-sm/6 font-medium text-gray-900">Height and Weight</label>
                             <div className="mt-2">
                                 <input type="text" name="heightWeight" id="height-weight" value={formData.heightWeight} onChange={handleChange} placeholder={'e.g., 5\'8", 150 lbs'} className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" />

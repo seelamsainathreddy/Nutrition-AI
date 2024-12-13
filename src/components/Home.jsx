@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero, CustomerReviews, Subscribe } from '../sections'
+import { Hero } from '../sections'
 
 function Home() {
   return (
