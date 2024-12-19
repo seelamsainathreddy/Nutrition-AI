@@ -1,7 +1,8 @@
 import React from 'react'
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
-
-const ProfileForm = ({setDietPlan, setIsLoading, onGenerate}) => {
+const ProfileForm = ({setDietPlan, setUpdateVariables, onGenerate}) => {
   const [formData, setFormData] = React.useState({
     age: '',
     gender: '',
@@ -29,7 +30,10 @@ const ProfileForm = ({setDietPlan, setIsLoading, onGenerate}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-    setIsLoading(true);
+    setUpdateVariables({
+        isLoading: true,
+        visibleSpace : false
+    })
     try {
       console.log("inside the handle submit");
 
@@ -71,12 +75,17 @@ const ProfileForm = ({setDietPlan, setIsLoading, onGenerate}) => {
     } catch (err) {
       setError(err.message); // Handle errors
     } finally {
-      setIsLoading(false);
+      setUpdateVariables({
+        isLoading : false,
+        visibleSpace : true
+      });
     }
-  };
+ }
+
+
 
   return (
-    <div className="mt-6 max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg ml-6">
+    <div className="mt-6 max-w-lg mx-auto bg-white p-8 rounded-lg">
         <h1 className='text-3xl mb-5'>Patient Infromation</h1>
      <form onSubmit={handleSubmit}>
             <div className="space-y-12">
