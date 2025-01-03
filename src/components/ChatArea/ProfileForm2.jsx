@@ -63,7 +63,7 @@ const formSchema = z.object({
 });
 
 
-export default function ProfileForm({setDietPlan, setUpdateVariables, onGenerate}) {
+export default function ProfileForm({setDietPlan, setUpdateVariables, slideEnd}) {
  
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -113,7 +113,7 @@ const onSubmit = async (values) => {
       setDietPlan(data);
 
       // Call the onGenerate function to scroll
-      onGenerate();
+      slideEnd();
     } catch (err) {
       //setError(err.message); // Handle errors
       console.log("handle error for validation")
